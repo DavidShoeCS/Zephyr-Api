@@ -1,0 +1,1647 @@
+{
+	"info": {
+		"_postman_id": "7fc35171-c6e8-438e-9c8c-3c7c5d0599ca",
+		"name": "zephyr",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create new user in db",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"test@oregonstate.edu\",\n    \"username\": \"Testusername\",\n    \"password\": \"Testpassword\"\n}\n"
+				},
+				"url": {
+					"raw": "{{app_url}}/useraccount",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"useraccount"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create duplicate user in db",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(405);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"test@oregonstate.edu\",\n    \"username\": \"Testusername\",\n    \"password\": \"Testpassword\"\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/useraccount",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"useraccount"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create new user with same username",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"test3@oregonstate.edu\",\n    \"username\": \"Testusername\",\n    \"password\": \"Testpassword\"\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/useraccount",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"useraccount"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create new different user in db",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"test2@gmail.com\",\n    \"username\": \"Testusername2\",\n    \"password\": \"Testpassword\"\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/useraccount",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"useraccount"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all user accounts",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/useraccount",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"useraccount"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get 1 account test@oregonstate.edu",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/useraccount/test@oregonstate.edu",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"useraccount",
+						"test@oregonstate.edu"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get 1 account balance",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/useraccount/test@oregonstate.edu/balance",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"useraccount",
+						"test@oregonstate.edu",
+						"balance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "patch balance",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"balance\": 2500\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/useraccount/test@oregonstate.edu/balance",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"useraccount",
+						"test@oregonstate.edu",
+						"balance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get account new balance",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/useraccount/test@oregonstate.edu/balance",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"useraccount",
+						"test@oregonstate.edu",
+						"balance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get account resources",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/useraccount/test@oregonstate.edu/resources",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"useraccount",
+						"test@oregonstate.edu",
+						"resources"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get account new resource list after patch",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/useraccount/test@oregonstate.edu/resources",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"useraccount",
+						"test@oregonstate.edu",
+						"resources"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get user account that doesnt exist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/useraccount/fake@oregonstate.edu",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"useraccount",
+						"fake@oregonstate.edu"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get balance of a user that doesnt exist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/useraccount/fake@oregonstate.edu/balance",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"useraccount",
+						"fake@oregonstate.edu",
+						"balance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get resources for account that doesnt exist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/useraccount/fake@oregonstate.edu/resources",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"useraccount",
+						"fake@oregonstate.edu",
+						"resources"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patch balance to account that doesnt exist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"balance\": 25\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/useraccount/fake@oregonstate.edu/balance",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"useraccount",
+						"fake@oregonstate.edu",
+						"balance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patch resource list to account that doesnt exist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"resource_id\": 7\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/useraccount/fake@oregonstate.edu/resources",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"useraccount",
+						"fake@oregonstate.edu",
+						"resources"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create new resource in db",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let urlLib = require('url');",
+							"let moment = require(\"moment\");",
+							"// set timestamp with UNIX/Epoch time.",
+							"var ts = Date.now()",
+							"pm.variables.set(\"timestamp\", ts);",
+							"",
+							"// set APP_ID",
+							"var appidpre = \"businesstest@oregonstate.edu\";",
+							"pm.variables.set(\"appid\", appidpre);",
+							"",
+							"//set Nonce",
+							"var noncepre = \"dunno\";",
+							"pm.variables.set(\"nonce\", noncepre);",
+							"",
+							"// set secret_key for signature",
+							"var secret_key = \"17e75a05-265b-4ad2-9793-33498bf79bec\";",
+							"",
+							"// create a signature with nonce and secret_key",
+							"var hash = CryptoJS.HmacSHA512(noncepre, secret_key);",
+							"hash = hash.toString(CryptoJS.enc.Hex);",
+							"",
+							"pm.variables.set(\"signature\", hash);",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "APP_ID",
+						"value": "{{appid}}",
+						"type": "text"
+					},
+					{
+						"key": "Nonce",
+						"value": "{{nonce}}",
+						"type": "text"
+					},
+					{
+						"key": "Timestamp",
+						"value": "{{timestamp}}",
+						"type": "text"
+					},
+					{
+						"key": "Signature",
+						"value": "{{signature}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"resource_id\": \"1NEW_RESOURCE\",\n    \"cost\": 2.50,\n    \"dkey\": \"1247KASJFjdfhaiuLJKISF73\"\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/resource",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"resource"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create duplicate resource in db",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let urlLib = require('url');",
+							"let moment = require(\"moment\");",
+							"// set timestamp with UNIX/Epoch time.",
+							"var ts = Date.now()",
+							"pm.variables.set(\"timestamp\", ts);",
+							"",
+							"// set APP_ID",
+							"var appidpre = \"businesstest@oregonstate.edu\";",
+							"pm.variables.set(\"appid\", appidpre);",
+							"",
+							"//set Nonce",
+							"var noncepre = \"dunno\";",
+							"pm.variables.set(\"nonce\", noncepre);",
+							"",
+							"// set secret_key for signature",
+							"var secret_key = \"17e75a05-265b-4ad2-9793-33498bf79bec\";",
+							"",
+							"// create a signature with nonce and secret_key",
+							"var hash = CryptoJS.HmacSHA512(noncepre, secret_key)",
+							"console.log(hash.toString(CryptoJS.enc.Hex))",
+							"",
+							"pm.variables.set(\"signature\", hash.toString(CryptoJS.enc.Hex));",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "APP_ID",
+						"value": "{{appid}}",
+						"type": "text"
+					},
+					{
+						"key": "Nonce",
+						"value": "{{nonce}}",
+						"type": "text"
+					},
+					{
+						"key": "Timestamp",
+						"value": "{{timestamp}}",
+						"type": "text"
+					},
+					{
+						"key": "Signature",
+						"value": "{{signature}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"resource_id\": \"1NEW_RESOURCE\",\n    \"cost\": 2.50,\n    \"dkey\": \"1247KASJFjdfhaiuLJKISF73\"\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/resource",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"resource"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create new resource in db",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let urlLib = require('url');",
+							"let moment = require(\"moment\");",
+							"// set timestamp with UNIX/Epoch time.",
+							"var ts = Date.now()",
+							"pm.variables.set(\"timestamp\", ts);",
+							"",
+							"// set APP_ID",
+							"var appidpre = \"businesstest@oregonstate.edu\";",
+							"pm.variables.set(\"appid\", appidpre);",
+							"",
+							"//set Nonce",
+							"var noncepre = \"dunno\";",
+							"pm.variables.set(\"nonce\", noncepre);",
+							"",
+							"// set secret_key for signature",
+							"var secret_key = \"17e75a05-265b-4ad2-9793-33498bf79bec\";",
+							"",
+							"// create a signature with nonce and secret_key",
+							"var hash = CryptoJS.HmacSHA512(noncepre, secret_key)",
+							"console.log(hash.toString(CryptoJS.enc.Hex))",
+							"",
+							"pm.variables.set(\"signature\", hash.toString(CryptoJS.enc.Hex));",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "APP_ID",
+						"value": "{{appid}}",
+						"type": "text"
+					},
+					{
+						"key": "Nonce",
+						"value": "{{nonce}}",
+						"type": "text"
+					},
+					{
+						"key": "Timestamp",
+						"value": "{{timestamp}}",
+						"type": "text"
+					},
+					{
+						"key": "Signature",
+						"value": "{{signature}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"resource_id\": \"1NEW_RESOURCE2\",\n    \"cost\": 2.50,\n    \"dkey\": \"1247KASJFjdfhaiuLJKISF73\"\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/resource",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"resource"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create new resource invalid secret",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let urlLib = require('url');",
+							"let moment = require(\"moment\");",
+							"// set timestamp with UNIX/Epoch time.",
+							"var ts = Date.now()",
+							"pm.variables.set(\"timestamp\", ts);",
+							"",
+							"// set APP_ID",
+							"var appidpre = \"businesstest@oregonstate.edu\";",
+							"pm.variables.set(\"appid\", appidpre);",
+							"",
+							"//set Nonce",
+							"var noncepre = \"dunno\";",
+							"pm.variables.set(\"nonce\", noncepre);",
+							"",
+							"// set secret_key for signature",
+							"var secret_key = \"d2sdafdf20asdf64232\";",
+							"",
+							"// create a signature with nonce and secret_key",
+							"var hash = CryptoJS.HmacSHA512(noncepre, secret_key)",
+							"console.log(hash.toString(CryptoJS.enc.Hex))",
+							"",
+							"pm.variables.set(\"signature\", hash.toString(CryptoJS.enc.Hex));",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "APP_ID",
+						"value": "{{appid}}",
+						"type": "text"
+					},
+					{
+						"key": "Nonce",
+						"value": "{{nonce}}",
+						"type": "text"
+					},
+					{
+						"key": "Timestamp",
+						"value": "{{timestamp}}",
+						"type": "text"
+					},
+					{
+						"key": "Signature",
+						"value": "{{signature}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"resource_id\": \"1NEW_RESOURCE3\",\n    \"cost\": 2.50,\n    \"dkey\": \"1247KASJFjdfhaiuLJKISF73\"\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/resource",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"resource"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all resources",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/resource",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"resource"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get 1 resource \"hello\"",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/resource/1NEW_RESOURCE",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"resource",
+						"1NEW_RESOURCE"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get 1 resource cost",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/resource/1NEW_RESOURCE/cost",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"resource",
+						"1NEW_RESOURCE",
+						"cost"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "patch resource cost",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"cost\": 150.27\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/resource/1NEW_RESOURCE/cost",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"resource",
+						"1NEW_RESOURCE",
+						"cost"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get new resource cost",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/resource/1NEW_RESOURCE/cost",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"resource",
+						"1NEW_RESOURCE",
+						"cost"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get resource dkey",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/resource/1NEW_RESOURCE/dkey",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"resource",
+						"1NEW_RESOURCE",
+						"dkey"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "patch new dkey",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"dkey\": \"NEWDKEY_ASDLIOFUDFBH3\"\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/resource/1NEW_RESOURCE/dkey",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"resource",
+						"1NEW_RESOURCE",
+						"dkey"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get resource new dkey",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{app_url}}/resource/1NEW_RESOURCE/dkey",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"resource",
+						"1NEW_RESOURCE",
+						"dkey"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get resource that doesnt exist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/resource/doesnotexist",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"resource",
+						"doesnotexist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get cost of a resource that doesn't exist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/resource/doesnotexist/cost",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"resource",
+						"doesnotexist",
+						"cost"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get dkey of a resource that doesn't exist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/resource/doesnotexist/dkey",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"resource",
+						"doesnotexist",
+						"dkey"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "patch dkey into resource that doesnt exist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"dkey\": \"sdagfadf\"\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/resource/doesnotexist/dkey",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"resource",
+						"doesnotexist",
+						"dkey"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "patch cost into resource that doesnt exist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"cost\": 555.555\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/resource/doesnotexist/cost",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"resource",
+						"doesnotexist",
+						"cost"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login attempt success",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/useraccount/login/username/Testusername/password/Testpassword",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"useraccount",
+						"login",
+						"username",
+						"Testusername",
+						"password",
+						"Testpassword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login attempt fail",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/useraccount/login/username/Testusername/password/Testpassword2",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"useraccount",
+						"login",
+						"username",
+						"Testusername",
+						"password",
+						"Testpassword2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "confirm good transaction",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/confirmtransaction/email/test@oregonstate.edu/resource/1NEW_RESOURCE",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"confirmtransaction",
+						"email",
+						"test@oregonstate.edu",
+						"resource",
+						"1NEW_RESOURCE"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "confirm already owned resource",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/confirmtransaction/email/test@oregonstate.edu/resource/1NEW_RESOURCE",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"confirmtransaction",
+						"email",
+						"test@oregonstate.edu",
+						"resource",
+						"1NEW_RESOURCE"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a very expensive resource",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let urlLib = require('url');",
+							"let moment = require(\"moment\");",
+							"// set timestamp with UNIX/Epoch time.",
+							"var ts = Date.now()",
+							"pm.variables.set(\"timestamp\", ts);",
+							"",
+							"// set APP_ID",
+							"var appidpre = \"businesstest@oregonstate.edu\";",
+							"pm.variables.set(\"appid\", appidpre);",
+							"",
+							"//set Nonce",
+							"var noncepre = \"dunno\";",
+							"pm.variables.set(\"nonce\", noncepre);",
+							"",
+							"// set secret_key for signature",
+							"var secret_key = \"17e75a05-265b-4ad2-9793-33498bf79bec\";",
+							"",
+							"// create a signature with nonce and secret_key",
+							"var hash = CryptoJS.HmacSHA512(noncepre, secret_key)",
+							"console.log(hash.toString(CryptoJS.enc.Hex))",
+							"",
+							"pm.variables.set(\"signature\", hash.toString(CryptoJS.enc.Hex));",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "APP_ID",
+						"value": "{{appid}}",
+						"type": "text"
+					},
+					{
+						"key": "Nonce",
+						"value": "{{nonce}}",
+						"type": "text"
+					},
+					{
+						"key": "Timestamp",
+						"value": "{{timestamp}}",
+						"type": "text"
+					},
+					{
+						"key": "Signature",
+						"value": "{{signature}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"resource_id\": \"1EXPENSIVE_RESOURCE\",\n    \"cost\": 2500,\n    \"dkey\": \"1247KASJdfhgsdhdsfgfdgsfgf3\"\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/resource",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"resource"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "confirm too expensive",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/confirmtransaction/email/test2@gmail.com/resource/1NEW_RESOURCE",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"confirmtransaction",
+						"email",
+						"test2@gmail.com",
+						"resource",
+						"1NEW_RESOURCE"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "confirm with bad email",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/confirmtransaction/email/fake@oregonstate.edu/resource/1NEW_RESOURCE",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"confirmtransaction",
+						"email",
+						"fake@oregonstate.edu",
+						"resource",
+						"1NEW_RESOURCE"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "confirm with bad resource",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/confirmtransaction/email/test@oregonstate.edu/resource/dneresource",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"confirmtransaction",
+						"email",
+						"test@oregonstate.edu",
+						"resource",
+						"dneresource"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
